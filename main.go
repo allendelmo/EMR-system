@@ -1,6 +1,7 @@
 package main
 
 import (
+	"EMR-system/internal/database"
 	"context"
 	"database/sql"
 	"fmt"
@@ -11,6 +12,14 @@ import (
 
 var templates = template.Must(template.ParseGlob("templates/*.html"))
 var ddl string
+
+type config struct {
+	db *database.Queries
+	// platform  string // TODO
+	// jwtSecret string // TODO
+	dbUrl    string
+	platform string
+}
 
 func dashboard(w http.ResponseWriter, r *http.Request) {
 	templates.ExecuteTemplate(w, "dashboard.html", nil)
