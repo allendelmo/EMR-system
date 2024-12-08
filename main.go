@@ -8,6 +8,9 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+
+	//"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
 var templates = template.Must(template.ParseGlob("templates/*.html"))
@@ -52,4 +55,6 @@ func main() {
 
 	fmt.Println("Server started at :", port)
 	log.Fatal(server.ListenAndServe())
+
+	lambda.Start(dashboard)
 }
